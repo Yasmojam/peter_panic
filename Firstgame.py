@@ -7,8 +7,7 @@ display_width = 800
 display_height = 600
 
 black = (0,0,0)
-white = (255,255,255) #difing colours
-ugly_colour = (67, 137, 219)
+white = (255,255,255) #def-ing colours
 
 pete_width = 70
 
@@ -90,7 +89,6 @@ def game_loop():
         x += x_change #change position of peter
 
         boydorr(0,0) #make background the boyd orr
-        #deadlines(deadlines_startx, deadlines_starty, deadlines_width, deadlines_height, ugly_colour) #deadlines(deadx, deady, deadw, deadh, color)
         deadlines(CS_sprites, (deadlines_startx, deadlines_starty))
         deadlines_starty += deadlines_speed #add 7 to y position every loop
         pete(x,y)
