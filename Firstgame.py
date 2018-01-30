@@ -8,6 +8,7 @@ display_height = 600
 
 black = (0,0,0)
 white = (255,255,255) #def-ing colours
+red = (157, 2, 30)
 
 pete_width = 70
 
@@ -23,6 +24,10 @@ PSDImg = pygame.image.load("PSD.png")
 AlgsImg = pygame.image.load("Algs.png")
 ISImg = pygame.image.load("IS.png")
 
+def score_box(hit_deadlines):
+    font = pygame.font.SysFont('comicsansms', 25)
+    text = font.render("Deadlines hit: " + str(hit_deadlines) , True, white, red)
+    gameDisplay.blit(text, (25,10))
 
 def boydorr(boydx, boydy):
     gameDisplay.blit(boydImg,(boydx, boydy))
@@ -92,9 +97,10 @@ def game_loop():
         deadlines(CS_sprites, (deadlines_startx, deadlines_starty))
         deadlines_starty += deadlines_speed #add 7 to y position every loop
         pete(x,y)
+        score_box(num_hit)
 
         if x > display_width - pete_width or x < 0:
-            x_change = 0 #do the crash funct which shows message
+            x_change = 0 #do the crash function which shows message
 
         if y < deadlines_starty + deadlines_height: #is bottom corner lower than pete
             if x > deadlines_startx and x < deadlines_startx + deadlines_width or x + pete_width > deadlines_startx and x + pete_width < deadlines_startx + deadlines_width:
@@ -102,7 +108,6 @@ def game_loop():
                 deadlines_startx = random.randrange(0, display_width - deadlines_width)
                 num_hit += 1
                 CS_sprites = random.choice([APImg, DFImg, PSDImg, AlgsImg, ISImg])
-                print(num_hit)
                 if num_hit%5 == 0:
                     deadlines_speed += 1
 
