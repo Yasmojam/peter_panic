@@ -116,4 +116,4 @@ def game_loop():
 
 game_loop()
 pygame.quit()
-quit()
+quit() #Have i configured git properly on ubuntu?
